@@ -1,0 +1,1 @@
+This is a demo of using nodejs to create Alfred 2 workflow.
