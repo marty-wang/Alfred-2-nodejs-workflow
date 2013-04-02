@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string></string>
+	<key>connections</key>
+	<dict>
+		<key>103711DE-99EA-47AE-938E-8A835229A43F</key>
+		<array/>
+		<key>17245C3E-8A83-445A-A4FF-175E1020D590</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>E134A2B8-5FD8-45AA-B99A-4365DA89AFDB</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>7D95A226-98BB-4628-9F36-3D8CC4C47F39</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>951F6DC4-70DE-4060-BC95-F599D97048F5</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>951F6DC4-70DE-4060-BC95-F599D97048F5</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>781AC211-519A-49F6-801E-D1EE52AB27FC</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>E134A2B8-5FD8-45AA-B99A-4365DA89AFDB</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>616E554D-C325-4710-BBB6-46D4271F1423</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Mo Wang</string>
+	<key>description</key>
+	<string></string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>nodejs experiment</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>setnode</string>
+				<key>text</key>
+				<string>Set the node path</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>7D95A226-98BB-4628-9F36-3D8CC4C47F39</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>63</integer>
+				<key>script</key>
+				<string>from nodeflow import NodeFlow
+
+nf = NodeFlow()
+has_node = nf.ensure_node()
+if has_node:
+	nf.run(['node', 'main.js', '{query}'])</string>
+				<key>type</key>
+				<integer>3</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>E134A2B8-5FD8-45AA-B99A-4365DA89AFDB</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>escaping</key>
+				<integer>63</integer>
+				<key>keyword</key>
+				<string>checknode</string>
+				<key>runningsubtext</key>
+				<string>Looking</string>
+				<key>script</key>
+				<string>from nodeflow import NodeFlow
+
+nodeflow = NodeFlow()
+has_node = nodeflow.ensure_node()
+nodeflow.feedback(has_node)
+</string>
+				<key>title</key>
+				<string>Check if node is available</string>
+				<key>type</key>
+				<integer>3</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>103711DE-99EA-47AE-938E-8A835229A43F</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>63</integer>
+				<key>script</key>
+				<string>from nodeflow import NodeFlow
+
+nodeflow = NodeFlow()
+nodeflow.set_node('{query}')
+
+print '{query} is set'</string>
+				<key>type</key>
+				<integer>3</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>951F6DC4-70DE-4060-BC95-F599D97048F5</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>testnode</string>
+				<key>text</key>
+				<string>test node</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>17245C3E-8A83-445A-A4FF-175E1020D590</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>output</key>
+				<integer>0</integer>
+				<key>removeextension</key>
+				<false/>
+				<key>sticky</key>
+				<false/>
+				<key>text</key>
+				<string>{query}</string>
+				<key>title</key>
+				<string>test</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>616E554D-C325-4710-BBB6-46D4271F1423</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>output</key>
+				<integer>0</integer>
+				<key>removeextension</key>
+				<false/>
+				<key>sticky</key>
+				<false/>
+				<key>text</key>
+				<string>{query}</string>
+				<key>title</key>
+				<string>node</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>781AC211-519A-49F6-801E-D1EE52AB27FC</string>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>103711DE-99EA-47AE-938E-8A835229A43F</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+		<key>17245C3E-8A83-445A-A4FF-175E1020D590</key>
+		<dict>
+			<key>ypos</key>
+			<real>250</real>
+		</dict>
+		<key>616E554D-C325-4710-BBB6-46D4271F1423</key>
+		<dict>
+			<key>ypos</key>
+			<real>250</real>
+		</dict>
+		<key>781AC211-519A-49F6-801E-D1EE52AB27FC</key>
+		<dict>
+			<key>ypos</key>
+			<real>130</real>
+		</dict>
+		<key>7D95A226-98BB-4628-9F36-3D8CC4C47F39</key>
+		<dict>
+			<key>ypos</key>
+			<real>130</real>
+		</dict>
+		<key>951F6DC4-70DE-4060-BC95-F599D97048F5</key>
+		<dict>
+			<key>ypos</key>
+			<real>130</real>
+		</dict>
+		<key>E134A2B8-5FD8-45AA-B99A-4365DA89AFDB</key>
+		<dict>
+			<key>ypos</key>
+			<real>250</real>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string></string>
+</dict>
+</plist>
